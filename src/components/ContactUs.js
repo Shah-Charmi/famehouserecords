@@ -8,7 +8,7 @@ const ContactForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState(""); // New state for the submission status
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,14 +27,29 @@ const ContactForm = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
       setErrors({});
-      console.log("Form Submitted:", formData);
-      setSubmitted(true);
-      setFormData({ name: "", email: "", message: "" });
+      try {
+        const response = await fetch("http://localhost:5000/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          setStatus("Thank you for contacting us! We'll get back to you soon.");
+          setFormData({ name: "", email: "", message: "" });
+        } else {
+          setStatus("There was an error sending your message. Please try again.");
+        }
+      } catch (error) {
+        setStatus("There was an error sending your message. Please try again.");
+      }
     } else {
       setErrors(formErrors);
     }
@@ -43,11 +58,7 @@ const ContactForm = () => {
   return (
     <div className="container mt-5">
       <h2>Contact Us</h2>
-      {submitted && (
-        <div className="alert alert-success" role="alert">
-          Thank you for contacting us! We'll get back to you soon.
-        </div>
-      )}
+      {status && <div className="alert alert-info">{status}</div>} {/* Display status message */}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
@@ -78,9 +89,7 @@ const ContactForm = () => {
             onChange={handleChange}
             placeholder="Enter your email"
           />
-          {errors.email && (
-            <div className="invalid-feedback">{errors.email}</div>
-          )}
+          {errors.email && <div className="invalid-feedback">{errors.email}</div>}
         </div>
 
         <div className="mb-3">
@@ -96,9 +105,7 @@ const ContactForm = () => {
             onChange={handleChange}
             placeholder="Write your message here"
           ></textarea>
-          {errors.message && (
-            <div className="invalid-feedback">{errors.message}</div>
-          )}
+          {errors.message && <div className="invalid-feedback">{errors.message}</div>}
         </div>
 
         <button type="submit" className="btn btn-primary">

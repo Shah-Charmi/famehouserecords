@@ -1,0 +1,69 @@
+/* General Home Container Styling */
+.home-container {
+  font-family: 'Arial', sans-serif;
+}
+
+/* Hero Section Styling */
+.hero-section {
+  background-image: url('https://lirp.cdn-website.com/59e2739c/dms3rep/multi/opt/PHOTO-2024-10-03-11-40-58-9b13f666-1920w.jpg');  /* Replace with your actual image URL */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;  /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-text {
+  z-index: 1;
+  padding: 20px;
+}
+
+.hero-title {
+  font-size: 6rem; /* Large title for the hero section */
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-description {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-weight: lighter;
+}
+
+.hero-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+  }
+
+  .hero-btn {
+    padding: 10px 18px;
+    font-size: 1rem;
+  }
+}

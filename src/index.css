@@ -1,0 +1,27 @@
+/* Basic styling for the homepage */
+.home-container {
+  padding-top: 50px;
+  background-color: #f8f9fa;
+}
+
+.hero-section {
+
+  background-size: cover;
+  height: 300px;
+  color: white;
+  padding: 100px 0;
+}
+
+.about-section {
+  background-color: #f1f1f1;
+  padding: 50px 0;
+}
+
+.about-page {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.artist-list .card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

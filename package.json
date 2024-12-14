@@ -52,6 +52,8 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Shah-Charmi/famehouserecords/issues"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
-
 }

@@ -7,7 +7,14 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-      <a href="/"><img src="https://lirp.cdn-website.com/59e2739c/dms3rep/multi/opt/PHOTO-2024-10-03-11-40-58-9b13f666-1920w.jpg" height="100px" width="100px"></img></a>
+        <a href="/" className="navbar-brand">
+          <img
+            src="https://lirp.cdn-website.com/59e2739c/dms3rep/multi/opt/PHOTO-2024-10-03-11-40-58-9b13f666-1920w.jpg"
+            alt="FameHouse Logo"
+            height="100px"
+            width="100px"
+          />
+        </a>
         <button 
           className="navbar-toggler" 
           type="button" 
